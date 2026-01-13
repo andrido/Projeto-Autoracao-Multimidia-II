@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mandacaru Games - Cadastro</title>
+    <link rel="stylesheet" href="./styles/tela cadastro.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>🎮 Mandacaru Games</h1>
+            <p>Cadastre-se e entre para a comunidade gamer!</p>
+        </header>
+
+        <main>
+            <form id="form-cadastro">
+                <div class="form-group">
+                    <label for="nome">Nome Completo</label>
+                    <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo" maxlength="50">
+                    <span class="error" id="nome-error"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" placeholder="exemplo@dominio.com">
+                    <span class="error" id="email-error"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="cep">CEP</label>
+                    <input type="text" id="cep" name="cep" placeholder="00000-000">
+                    <span class="error" id="cep-error"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="endereco">Endereço (Rua/Logradouro)</label>
+                    <input type="text" id="endereco" name="endereco" placeholder="Rua, Avenida, etc.">
+                    <span class="error" id="endereco-error"></span>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="cidade">Cidade</label>
+                    <input type="text" id="cidade" name="cidade" placeholder="Nome da sua cidade">
+                    <span class="error" id="cidade-error"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="estado">Estado (Sigla)</label>
+                    <input type="text" id="estado" name="estado" placeholder="Ex: CE, SP, RJ" maxlength="2">
+                    <span class="error" id="estado-error"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="senha">Senha</label>
+                    <input type="password" id="senha" name="senha"
+                        placeholder="Mínimo 10 caracteres com letras, números e *#:">
+                    <span class="error" id="senha-error"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="repetir-senha">Repetir Senha</label>
+                    <input type="password" id="repetir-senha" name="repetir-senha"
+                        placeholder="Digite a senha novamente">
+                    <span class="error" id="repetir-senha-error"></span>
+                </div>
+
+                <div class="buttons">
+                    <button type="button" id="btn-limpar">Limpar</button>
+                    <button type="submit" id="btn-enviar">Enviar</button>
+                </div>
+            </form>
+
+            <div id="resultado" class="resultado"></div>
+        </main>
+    </div>
+
+    <script src="./scripts/tela cadastro.js"></script>
+</body>
+
+</html>
