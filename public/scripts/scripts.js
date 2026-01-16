@@ -261,7 +261,16 @@ nextBtn.addEventListener('click', async (e) => {
                     body: formData
                 });
 
-                const result = await response.json().catch(() => ({ mensagem: "Erro JSON" }));
+                // --- MUDANÇA AQUI: LER COMO TEXTO PRIMEIRO ---
+                const textResponse = await response.text();
+                let result;
+
+                try {
+                    result = JSON.parse(textResponse);
+                } catch (e) {
+                    console.error("Erro CRÍTICO do servidor (HTML):", textResponse);
+                    throw new Error("O servidor falhou (Erro 500). Olhe o console (F12) para ver o erro real.");
+                }
 
                 if (response.ok) {
                     alert("🎉 Sucesso! Bem-vindo ao Mandacaru Games!");
@@ -270,7 +279,9 @@ nextBtn.addEventListener('click', async (e) => {
                     alert(`Erro: ${result.mensagem || 'Falha ao cadastrar'}`);
                     playErrorSound();
                 }
+
             } catch (error) {
+                console.error("Erro detalhado:", error);
                 alert("Erro técnico: " + error.message);
                 playErrorSound();
             } finally {
