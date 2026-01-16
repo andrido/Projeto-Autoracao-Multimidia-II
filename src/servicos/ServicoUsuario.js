@@ -3,8 +3,9 @@ let { contas, numeroUnico } = bancodedados;
 
 
 
+
 const criarUsuario = async (dadosUsuario) => {
-    const { nome, email, cep, endereco, cidade, estado, senha, senhaRepetida } = dadosUsuario;
+    const { nome, email, cep, endereco, cidade, estado, senha, senhaRepetida, foto } = dadosUsuario;
 
     if (nome.length < 2 || nome.length > 50) {
         throw { status: 400, mensagem: "O nome precisa ter no mínimo 2 e no máximo 50 caracteres." };
@@ -57,7 +58,7 @@ const criarUsuario = async (dadosUsuario) => {
         cidade,
         estado,
         senha,
-        saldo: 0,
+        foto: foto || null,
         data_criacao: new Date()
     };
 
@@ -71,11 +72,11 @@ const criarUsuario = async (dadosUsuario) => {
             email: conta.email,
             cidade: conta.cidade,
             estado: conta.estado,
+            foto: conta.foto,
             data_criacao: conta.data_criacao
         }
     };
 };
-
 
 // -----  FUNÇÕES UTILITÁRIAS ---- //
 

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mandacaru Games - Cadastro</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./styles/styles.css">
+</head>
+
+<body>
+
+    <div class="main-container">
+        <div class="sidebar">
+            <div class="logo-cactus">🌵</div>
+            <div class="brand-name">
+                MANDACARU<br>GAMES
+            </div>
+        </div>
+
+        <div class="form-area">
+            <h2>Crie sua conta!</h2>
+
+            <div class="progress-bar">
+                <div class="dot active" id="dot-1"></div>
+                <div class="dot" id="dot-2"></div>
+                <div class="dot" id="dot-3"></div>
+            </div>
+
+            <form id="pixelForm" enctype="multipart/form-data">
+
+                <div class="form-step active-step" id="step-1">
+                    <div class="input-group">
+                        <label for="nome">Nome:</label>
+                        <input type="text" id="nome" name="nome" placeholder="Seu nome completo">
+                    </div>
+
+                    <div class="row">
+                        <div class="input-group" style="flex: 1;">
+                            <label for="cep">CEP:</label>
+                            <input type="text" id="cep" name="cep" placeholder="00000-000" maxlength="9">
+                        </div>
+                        <div class="input-group" style="flex: 0.5;">
+                            <label for="estado">UF:</label>
+                            <input type="text" id="estado" name="estado" maxlength="2" placeholder="CE">
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="cidade">Cidade:</label>
+                        <input type="text" id="cidade" name="cidade">
+                    </div>
+
+                    <div class="row">
+                        <div class="input-group" style="flex: 2;">
+                            <label for="endereco">Endereço:</label>
+                            <input type="text" id="endereco" name="endereco">
+                        </div>
+                        <div class="input-group" style="flex: 1;">
+                            <label for="numero">Nº:</label>
+                            <input type="text" id="numero" name="numero">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-step" id="step-2">
+                    <div class="input-group">
+                        <label for="email">E-mail:</label>
+                        <input type="email" id="email" name="email" placeholder="exemplo@mandacaru.com">
+                    </div>
+                    <div class="input-group">
+                        <label for="senha">Senha:</label>
+                        <input type="password" id="senha" name="senha">
+                    </div>
+                    <div class="input-group">
+                        <label for="confirmaSenha">Confirmar senha:</label>
+                        <input type="password" id="confirmaSenha" name="confirmaSenha">
+                    </div>
+                </div>
+
+                <div class="form-step" id="step-3">
+                    <div class="profile-container">
+                        <div class="profile-wrapper">
+                            <div class="profile-upload" id="fotoPreview">🐱</div>
+
+                            <input type="file" id="avatarInput" name="avatar" accept="image/*" style="display: none;">
+
+                            <button type="button" class="btn-small" id="btnUpload">Escolher foto</button>
+
+                            <small id="avatarError" class="error-msg"></small>
+                        </div>
+
+                        <div style="width: 100%;">
+                            <div class="input-group">
+                                <label for="nickname">Nome de usuário (Nick):</label>
+                                <input type="text" id="nickname" name="nickname">
+                            </div>
+                            <div class="input-group">
+                                <label for="descricao">Descrição:</label>
+                                <input type="text" id="descricao" name="descricao">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="btn-container">
+                    <button type="button" class="btn-clear" id="btnLimpar">LIMPAR</button>
+                    <button type="button" class="btn-next" id="nextBtn">Próximo</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <script src="./scripts/scripts.js"></script>
+</body>
+
+</html>
