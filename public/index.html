@@ -8,33 +8,30 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+    <link href="https://db.onlinewebfonts.com/c/8bc9d70b95a2eb000b10bcfff8f3bc48?family=Pixel+Operator+HB+SC" rel="stylesheet">
 
     <style>
         :root {
-            --bg-pink: #FFC0CB;
-            --dark-border: #4A3B32;
-            --btn-green: #6B8C42;
-            --grid-line: rgba(255, 255, 255, 0.4);
+            --bg-yellow: #fcee89;
+            --dark-border: #271f1b;
+            --btn-green: #448040;
+            --btn-green-hover: #294D26;
         }
 
         body {
             margin: 0;
             padding: 0;
-            background-color: #222;
+            background: linear-gradient(#448040,#0f4001);
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            font-family: 'VT323', monospace;
+            font-family: 'Pixel Operator HB SC', monospace;
             color: var(--dark-border);
         }
 
         .server-card {
-            background-color: var(--bg-pink);
-            background-image:
-                linear-gradient(var(--grid-line) 2px, transparent 2px),
-                linear-gradient(90deg, var(--grid-line) 2px, transparent 2px);
+            background-color: var(--bg-yellow);
             background-size: 40px 40px;
             border: 4px solid var(--dark-border);
             box-shadow: 10px 10px 0px #000;
@@ -46,7 +43,7 @@
         }
 
         h1 {
-            font-family: 'Press Start 2P', cursive;
+            font-family: 'Pixel Operator HB SC', cursive;
             font-size: 24px;
             margin-bottom: 20px;
             line-height: 1.5;
@@ -62,7 +59,7 @@
             box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.1);
         }
 
-        .indicator {
+        /*.indicator {
             display: inline-block;
             width: 15px;
             height: 15px;
@@ -72,6 +69,7 @@
             margin-right: 10px;
             animation: blink 1s infinite;
         }
+            */
 
         .menu-btn {
             display: block;
@@ -79,8 +77,8 @@
             background-color: var(--btn-green);
             color: white;
             text-decoration: none;
-            font-family: 'Press Start 2P', cursive;
-            font-size: 14px;
+            font-family: 'Pixel Operator HB SC', cursive;
+            font-size: 32px;
             padding: 15px 0;
             margin-bottom: 15px;
             border: 3px solid var(--dark-border);
@@ -89,7 +87,7 @@
         }
 
         .menu-btn:hover {
-            background-color: #5a7537;
+            background-color: var(--btn-green-hover);
             transform: translate(-2px, -2px);
             box-shadow: 6px 6px 0px var(--dark-border);
         }
@@ -124,20 +122,20 @@
 <body>
 
     <div class="server-card">
-        <div class="cactus-deco">🌵</div>
-        <h1>MANDACARU GAMES<br>SERVER</h1>
+        <div class="logo-mandacaru-games"><img src="imagens/logo-mandacaru-games.svg" alt="mandacaru" height="240px" width="300px"></div>
+        <!--<h1>MANDACARU GAMES</h1>-->
 
-        <div class="status">
+       <!-- <div class="status">
             <span class="indicator"></span>
             SYSTEM ONLINE
-        </div>
+        </div> -->
 
         <nav>
-            <a href="cadastro" class="menu-btn">📝 NOVO CADASTRO</a>
-            <a href="jogadores" class="menu-btn">👥 VER JOGADORES</a>
+            <a href="cadastro" class="menu-btn">Crie sua conta!</a>
+            <a href="jogadores" class="menu-btn">Conheça nossa comunidade</a>
         </nav>
 
-        <p style="margin-top: 20px; font-size: 18px;">v1.0.0 - Ready to Play</p>
+        <p style="margin-top: 20px; font-size: 24px;">Desde 2020</p>
     </div>
 
 </body>

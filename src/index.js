@@ -16,7 +16,7 @@ app.use(express.static(path.join(process.cwd(), 'public')));
 
 app.use(rotas);
 
-// --- MUDANÇA: Porta 5000 exigida ---
+
 const PORT = 5000;
 app.listen(PORT, () => {
     console.log(`✅ Servidor rodando na porta ${PORT}`);

@@ -1,11 +1,10 @@
 :root {
-    --bg-pink: #FFC0CB;
-    --grid-line: rgba(255, 255, 255, 0.4);
-    --dark-border: #4A3B32;
-    --btn-green: #6B8C42;
-    --btn-green-hover: #5a7537;
-    --text-color: #4A3B32;
-    --error-red: #D32F2F;
+    --bg-yellow: #fef4a7;
+    --dark-border: #271f1b;
+    --btn-green: #448040;
+    --btn-green-hover: #294D26;
+    --text-color: #271f1b;
+    --error-coral: #FF5A33;
 }
 
 * {
@@ -15,22 +14,19 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #222;
+    background: linear-gradient(#448040,#0f4001);
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    font-family: 'VT323', monospace;
+    font-family: 'Pixel Operator HB SC', monospace;
 }
 
 .main-container {
     display: flex;
     width: 900px;
     height: 600px;
-    background-color: var(--bg-pink);
-    background-image:
-        linear-gradient(var(--grid-line) 2px, transparent 2px),
-        linear-gradient(90deg, var(--grid-line) 2px, transparent 2px);
+    background-color: var(--bg-yellow);
     background-size: 40px 40px;
     border: 4px solid var(--dark-border);
     box-shadow: 10px 10px 0px #000;
@@ -39,32 +35,20 @@ body {
 }
 
 .sidebar {
-    width: 35%;
+    width: 30%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     border-right: 4px solid var(--dark-border);
-    background: rgba(255, 255, 255, 0.2);
+    background:linear-gradient(#e8d671, #fbb336);
 }
 
-.logo-cactus {
-    font-size: 100px;
-    margin-bottom: 10px;
-}
 
-.brand-name {
-    font-family: 'Press Start 2P', cursive;
-    font-size: 18px;
-    color: var(--dark-border);
-    text-align: center;
-    line-height: 1.5;
-    padding: 0 20px;
-}
 
 /* --- ÁREA DO FORMULÁRIO --- */
 .form-area {
-    width: 65%;
+    width: 70%;
     height: 100%;
     padding: 60px 40px;
     display: flex;
@@ -76,10 +60,10 @@ body {
 
 /* Título e Barra de Progresso */
 h2 {
-    font-family: 'Press Start 2P', cursive;
-    font-size: 16px;
+    font-family: 'Pixel Operator HB SC', cursive;
+    font-size: 36px;
     color: var(--dark-border);
-    margin-bottom: 10px;
+    margin-bottom: 6px;
     margin-top: 0;
     text-align: center;
     flex-shrink: 0;
@@ -88,7 +72,7 @@ h2 {
 .progress-bar {
     display: flex;
     gap: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     justify-content: center;
     flex-shrink: 0;
 }
@@ -96,7 +80,7 @@ h2 {
 .dot {
     width: 12px;
     height: 12px;
-    background-color: #cc8e99;
+    background-color: var(--bg-yellow);
     border-radius: 50%;
     border: 2px solid var(--dark-border);
     transition: background-color 0.3s;
@@ -135,7 +119,7 @@ form {
 /* --- INPUTS --- */
 .input-group {
     width: 100%;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     text-align: left;
     display: flex;
     flex-direction: column;
@@ -143,7 +127,7 @@ form {
 }
 
 label {
-    font-size: 16px;
+    font-size: 20px;
     font-weight: bold;
     color: var(--dark-border);
     margin-bottom: 2px;
@@ -154,7 +138,7 @@ textarea {
     width: 100%;
     padding: 5px 10px;
     height: 38px;
-    font-family: 'VT323', monospace;
+    font-family: 'Pixel Operator HB SC', monospace;
     font-size: 20px;
     border: 3px solid var(--dark-border);
     border-radius: 8px;
@@ -174,15 +158,15 @@ input:focus {
 
 /* --- MENSAGENS DE ERRO --- */
 .error-msg {
-    color: var(--error-red);
-    font-size: 11px;
+    color: var(--error-coral);
+    font-size: 12px;
     margin-top: 1px;
     display: none;
     font-weight: bold;
 }
 
 input.input-error {
-    border-color: var(--error-red);
+    border-color: var(--error-coral);
     background-color: #fff0f0;
 }
 
@@ -247,7 +231,7 @@ input.input-error {
 .profile-upload {
     width: 120px;
     height: 120px;
-    background-color: #dcb3bc;
+    background-color: var(--bg-yellow);
     border: 3px solid var(--dark-border);
     border-radius: 50%;
     display: flex;
@@ -272,11 +256,12 @@ input.input-error {
 }
 
 .btn-small {
-    margin-top: 10px;
-    font-family: 'VT323', monospace;
+    margin-top: 16px;
+    font-family: 'Pixel Operator HB SC', monospace;
+    font-size: 20px;
     cursor: pointer;
     border: 2px solid var(--dark-border);
-    background: white;
+    background: var(--btn-green);
     border-radius: 4px;
     padding: 2px 5px;
 }
@@ -284,8 +269,8 @@ input.input-error {
 .btn-next {
     background-color: var(--btn-green);
     color: white;
-    font-family: 'Press Start 2P', cursive;
-    font-size: 12px;
+    font-family: 'Pixel Operator HB SC', cursive;
+    font-size: 20px;
     padding: 15px 30px;
     border: 3px solid var(--dark-border);
     border-radius: 8px;
@@ -300,10 +285,10 @@ input.input-error {
 }
 
 .btn-clear {
-    background-color: #D32F2F;
+    background-color:#D32F2F;
     color: white;
-    font-family: 'Press Start 2P', cursive;
-    font-size: 12px;
+    font-family: 'Pixel Operator HB SC', cursive;
+    font-size: 20px;
     padding: 15px 20px;
     border: 3px solid var(--dark-border);
     border-radius: 8px;
@@ -361,8 +346,8 @@ input.input-error {
 }
 
 .card-nick {
-    font-family: 'Press Start 2P', cursive;
-    font-size: 10px;
+    font-family: 'Pixel Operator HB SC', cursive;
+    font-size: 24px;
     color: var(--btn-green);
     margin-bottom: 5px;
     word-break: break-all;
@@ -380,7 +365,7 @@ input.input-error {
 }
 
 .card-location {
-    font-size: 14px;
+    font-size: 24px;
     color: #666;
     margin-top: 2px;
 }
@@ -392,7 +377,7 @@ input.input-error {
     align-items: center;
     gap: 20px;
     width: 100%;
-    height: 50px;
+    height: 100px;
     margin-top: auto;
     margin-bottom: 0;
     padding-top: 265px;
@@ -401,17 +386,17 @@ input.input-error {
 }
 
 .pagination-controls button {
-    background-color: #fff;
+    background-color: var(--btn-green);
     border: 2px solid var(--dark-border);
     padding: 5px 15px;
-    font-family: 'VT323', monospace;
-    font-size: 16px;
+    font-family: 'Pixel Operator HB SC', monospace;
+    font-size: 24px;
     cursor: pointer;
     transition: all 0.2s;
 }
 
 .pagination-controls button:hover:not(:disabled) {
-    background-color: var(--btn-green);
+    background-color: var(--btn-green-hover);
     color: white;
     transform: translateY(-2px);
     box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.2);

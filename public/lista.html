@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mandacaru Games - Jogadores</title>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://db.onlinewebfonts.com/c/8bc9d70b95a2eb000b10bcfff8f3bc48?family=Pixel+Operator+HB+SC" rel="stylesheet">
     <link rel="stylesheet" href="./styles/styles.css">
 </head>
 
@@ -13,20 +15,17 @@
     <div class="main-container">
         <div class="sidebar">
             <a href="/" style="text-decoration: none; cursor: pointer;">
-                <div class="logo-cactus">🌵</div>
+                 <div class="logo-mandacaru-games"><img src="imagens/logo-mandacaru-games.svg" alt="mandacaru" height="240px" width="300px"></div>
             </a>
-            <div class="brand-name">
-                MANDACARU<br>GAMES
-            </div>
             <br><br>
             <a href="cadastro.html" class="btn-next"
-                style="text-decoration: none; font-size: 10px; padding: 10px 15px;">
+                style="text-decoration: none; font-size: 24px; padding: 10px 15px;">
                 ⬅ CADASTRAR NOVO
             </a>
         </div>
 
         <div class="form-area" style="overflow-y: auto; display: block;">
-            <h2 style="text-align: center;">HALL DOS JOGADORES</h2>
+            <h2 style="text-align: center;">NOSSA COMUNIDADE</h2>
 
             <div id="usersList" class="users-grid">
                 <p style="width: 100%; text-align: center;">Carregando...</p>
@@ -34,7 +33,7 @@
 
             <div class="pagination-controls">
                 <button id="btnPrev" class="btn-small" disabled>⬅ ANTERIOR</button>
-                <span id="pageInfo" style="font-family: 'Press Start 2P'; font-size: 12px;">Pág 1</span>
+                <span id="pageInfo" style="font-family: 'Pixel Operator HB SC', cursive; font-size: 16px;">Pág 1</span>
                 <button id="btnNext" class="btn-small">PRÓXIMO ➡</button>
             </div>
         </div>
