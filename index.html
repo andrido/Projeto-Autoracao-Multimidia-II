@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conjugação - Presente do Indicativo</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #3498db;
+            --bg-color: #f4f6f7;
+            --text-color: #333;
+            --table-header-bg: #2980b9;
+            --table-row-hover: #eaf2f8;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            border-bottom: 3px solid var(--accent-color);
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            background-color: white;
+        }
+
+        th,
+        td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: var(--table-header-bg);
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9em;
+        }
+
+        /* Destaque para a primeira coluna (Pronomes) */
+        td:first-child {
+            font-weight: bold;
+            color: var(--primary-color);
+            background-color: #ecf0f1;
+            width: 100px;
+        }
+
+        /* Efeito de hover nas células de conjugação */
+        tbody tr:hover {
+            background-color: var(--table-row-hover);
+        }
+
+        /* Estilo específico para verbos irregulares */
+        .irregular {
+            color: #c0392b;
+            font-weight: 500;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+
+            th,
+            td {
+                padding: 10px;
+                font-size: 0.9em;
+            }
+        }
+
+        .note {
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #7f8c8d;
+            font-style: italic;
+            border-left: 4px solid var(--accent-color);
+            padding-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div style="text-align: center;">
+            <h1>Le Présent de l'Indicatif</h1>
+        </div>
+
+        <div id="tabela-container" class="table-wrapper">
+        </div>
+
+        <div class="note">
+            <p><strong>Nota:</strong> "Y avoir" é uma locução impessoal, conjugada apenas na 3ª pessoa do singular ("Il
+                y a"). Para fins didáticos, a tabela mostra a forma impessoal padrão.</p>
+        </div>
+    </div>
+
+    <script>
+        // Dados dos verbos e suas conjugações
+        const verbData = [
+            {
+                verbo: "Être (Ser/Estar)",
+                conjugacoes: ["Je suis", "Tu es", "Il/Elle/On est", "Nous sommes", "Vous êtes", "Ils/Elles sont"]
+            },
+            {
+                verbo: "Avoir (Ter)",
+                conjugacoes: ["J'ai", "Tu as", "Il/Elle/On a", "Nous avons", "Vous avez", "Ils/Elles ont"]
+            },
+            {
+                verbo: "Aller (Ir)",
+                conjugacoes: ["Je vais", "Tu vas", "Il/Elle/On va", "Nous allons", "Vous allez", "Ils/Elles vont"]
+            },
+            {
+                verbo: "Faire (Fazer)",
+                conjugacoes: ["Je fais", "Tu fais", "Il/Elle/On fait", "Nous faisons", "Vous faites", "Ils/Elles font"]
+            },
+            {
+                verbo: "Pouvoir (Poder)",
+                conjugacoes: ["Je peux", "Tu peux", "Il/Elle/On peut", "Nous pouvons", "Vous pouvez", "Ils/Elles peuvent"]
+            },
+            {
+                verbo: "Vouloir (Querer)",
+                conjugacoes: ["Je veux", "Tu veux", "Il/Elle/On veut", "Nous voulons", "Vous voulez", "Ils/Elles veulent"]
+            },
+            {
+                verbo: "Apprendre (Aprender)",
+                conjugacoes: ["J'apprends", "Tu apprends", "Il/Elle/On apprend", "Nous apprenons", "Vous apprenez", "Ils/Elles apprennent"]
+            },
+            {
+                verbo: "Y Avoir (Haver)",
+                conjugacoes: ["-", "-", "Il y a", "-", "-", "-"] // Impessoal
+            }
+        ];
+
+        const pronouns = ["Je / J'", "Tu", "Il / Elle / On", "Nous", "Vous", "Ils / Elles"];
+
+        function gerarTabela() {
+            let html = '<table>';
+
+            // Cabeçalho da tabela
+            html += '<thead><tr><th>Pessoa</th>';
+            verbData.forEach(v => {
+                html += `<th>${v.verbo}</th>`;
+            });
+            html += '</tr></thead>';
+
+            // Corpo da tabela
+            html += 'tbody';
+
+            // Itera sobre os pronomes (linhas)
+            for (let i = 0; i < pronouns.length; i++) {
+                html += '<tr>';
+                html += `<td>${pronouns[i]}</td>`; // Coluna do pronome
+
+                // Itera sobre os verbos (colunas) para preencher a linha atual
+                verbData.forEach(v => {
+                    let conjugacao = v.conjugacoes[i];
+
+                    // Remove o pronome da string de conjugação para deixar apenas o verbo na célula
+                    // (Opcional: mantivemos completo para clareza, mas podemos limpar se preferir)
+                    let textoCelula = conjugacao;
+
+                    // Destaca células vazias (caso do Y Avoir)
+                    if (textoCelula === "-") {
+                        html += `<td style="text-align:center; color:#ccc;">—</td>`;
+                    } else {
+                        html += `<td class="irregular">${textoCelula}</td>`;
+                    }
+                });
+                html += '</tr>';
+            }
+
+            html += '</tbody></table>';
+
+            // Insere no DOM
+            document.getElementById('tabela-container').innerHTML = html;
+        }
+
+        // Executa a função ao carregar a página
+        document.addEventListener('DOMContentLoaded', gerarTabela);
+    </script>
+
+</body>
+
+</html>

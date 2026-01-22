@@ -285,7 +285,6 @@ input.input-error {
     cursor: pointer;
     box-shadow: 4px 4px 0px var(--dark-border);
     margin-right: 15px;
-    /* Espaço entre os botões */
     transition: transform 0.1s, box-shadow 0.1s;
 }
 
@@ -299,4 +298,65 @@ input.input-error {
     justify-content: center;
     align-items: center;
     margin-top: 15px;
+}
+
+/* Grid para organizar os cards lado a lado */
+.users-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    /* Responsivo */
+    gap: 20px;
+    width: 100%;
+    padding-bottom: 20px;
+}
+
+/* O Card individual de cada jogador */
+.user-card {
+    background: #fff;
+    border: 3px solid var(--dark-border);
+    border-radius: 8px;
+    box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.2);
+}
+
+/* A foto dentro do card */
+.card-avatar {
+    width: 80px;
+    height: 80px;
+    border: 3px solid var(--dark-border);
+    border-radius: 50%;
+    object-fit: cover;/ margin-bottom: 10px;
+    background-color: #eee;
+}
+
+
+.card-nick {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 10px;
+    color: var(--btn-green);
+    margin-bottom: 5px;
+    word-break: break-all;
+}
+
+.card-name {
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--dark-border);
+    margin-bottom: 0;
+}
+
+.card-location {
+    font-size: 14px;
+    color: #666;
+    margin-top: 5px;
 }

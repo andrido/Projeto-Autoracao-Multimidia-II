@@ -54,11 +54,7 @@ if (btnLimpar) {
     });
 }
 
-// ... (O RESTO DO SEU CÓDIGO JS CONTINUA IGUAL DAQUI PRA BAIXO: Audio, CEP, Validações...)
-// ...
-// ...
 
-// --- EFEITOS SONOROS (AudioContext) ---
 function playErrorSound() {
     try {
         const AudioContext = window.AudioContext || window.webkitAudioContext;

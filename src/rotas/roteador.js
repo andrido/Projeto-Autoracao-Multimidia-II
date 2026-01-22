@@ -7,15 +7,23 @@ const path = require('path');
 const storage = multer.diskStorage({
     destination: (req, file, cb) => cb(null, 'uploads/'),
     filename: (req, file, cb) => {
-        // Aqui a gente GARANTE a extensão original
         cb(null, Date.now() + '-' + file.originalname);
     }
 });
-
 const upload = multer({ storage: storage });
 
-rotas.get('/usuario', listarContas);
+// Rota da API (Dados)
+rotas.get('/api/usuario', listarContas);
 
-rotas.post('/usuario', upload.single('avatar'), criarUsuario);
+// --- CORREÇÃO AQUI ---
+// Usamos process.cwd() para garantir que ele pegue a pasta 'public' na raiz do projeto
+rotas.get('/jogadores', (req, res) => {
+    res.sendFile(path.join(process.cwd(), 'public', 'lista.html'));
+});
+// ---------------------
+
+rotas.get('/cadastro', (req, res) => {
+    res.sendFile(path.join(process.cwd(), 'public', 'cadastro.html'));
+});
 
 module.exports = rotas;
