@@ -4,12 +4,15 @@ let usuarios = {
 
     contas: [{
         id: 1,
-        nome: "naninha",
+        nome: "iane",
+        nickname: "naninha",
         cpf: "00011122234",
         data_nascimento: "2021-03-15",
         telefone: "71999998888",
         email: "Ianebemlindinha@email.kom",
         senha: "12345",
+        cidade: "Fortaleza",
+        estado: 'CE',
         saldo: 0
     }],
     saques: [],

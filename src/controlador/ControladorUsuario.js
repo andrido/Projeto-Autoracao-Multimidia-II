@@ -28,9 +28,15 @@ const criarUsuario = async (req, res) => {
 
 const listarContas = (req, res) => {
     try {
-        const bancodedados = require('../bancoDeDados');
-        return res.json(bancodedados.contas);
+
+        const { pagina, limite } = req.query;
+
+        const resultado = usuarioService.listarUsuarios(pagina, limite);
+
+        return res.json(resultado);
+
     } catch (error) {
+        console.error(error);
         return res.status(500).json({ mensagem: 'Erro ao listar contas' });
     }
 };

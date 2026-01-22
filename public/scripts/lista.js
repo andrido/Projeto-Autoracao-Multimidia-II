@@ -1,42 +1,70 @@
+let paginaAtual = 1;
+const limite = 6; // Quantos cards por página
+
 document.addEventListener('DOMContentLoaded', () => {
-    carregarUsuarios();
+    carregarUsuarios(paginaAtual);
+
+    // Configura os botões
+    document.getElementById('btnPrev').addEventListener('click', () => mudarPagina(-1));
+    document.getElementById('btnNext').addEventListener('click', () => mudarPagina(1));
 });
 
-async function carregarUsuarios() {
+function mudarPagina(direcao) {
+    paginaAtual += direcao;
+    carregarUsuarios(paginaAtual);
+}
+
+async function carregarUsuarios(pagina) {
     const listContainer = document.getElementById('usersList');
+    const btnPrev = document.getElementById('btnPrev');
+    const btnNext = document.getElementById('btnNext');
+    const pageInfo = document.getElementById('pageInfo');
+
+    // Efeito visual de carregamento
+    listContainer.style.opacity = '0.5';
 
     try {
-        // --- CORREÇÃO AQUI ---
-        // Agora buscamos na rota certa de API
-        const response = await fetch('/api/usuario');
-        // ---------------------
+        // Agora passamos a página na URL
+        const response = await fetch(`/api/usuario?pagina=${pagina}&limite=${limite}`);
+        const dados = await response.json();
 
-        const usuarios = await response.json();
+        // O backend agora retorna { usuarios: [], meta: {} }
+        const listaUsuarios = dados.usuarios;
+        const meta = dados.meta;
+
         listContainer.innerHTML = '';
+        listContainer.style.opacity = '1';
 
-        if (usuarios.length === 0) {
-            listContainer.innerHTML = '<p style="text-align:center; width:100%;">Nenhum jogador encontrado 😢</p>';
-            return;
+        if (listaUsuarios.length === 0) {
+            listContainer.innerHTML = '<p style="text-align:center; width:100%;">Nenhum jogador nesta página.</p>';
+        } else {
+            listaUsuarios.forEach(user => {
+                const card = document.createElement('div');
+                card.className = 'user-card';
+
+                const imagemSrc = user.foto ? `/uploads/${user.foto}` : 'https://i.pinimg.com/736x/6f/44/ab/6f44abacfded1fe9a286cedaaf87f1a2.jpg';
+
+                card.innerHTML = `
+                    <img src="${imagemSrc}" alt="Foto" class="card-avatar">
+                    <div class="card-nick">${user.nickname || 'No Nick'}</div>
+                    <div class="card-name">${user.nome}</div>
+                    <div class="card-location">${user.cidade || '??'}/${user.estado || '??'}</div>
+                `;
+                listContainer.appendChild(card);
+            });
         }
 
-        usuarios.forEach(user => {
-            const card = document.createElement('div');
-            card.className = 'user-card';
+        // --- ATUALIZA OS BOTÕES ---
+        pageInfo.innerText = `Pág ${meta.paginaAtual} de ${meta.totalPaginas}`;
 
-            // Ajuste do caminho da imagem
-            const imagemSrc = user.avatar ? `/uploads/${user.avatar}` : 'https://placekitten.com/100/100';
+        // Desativa "Anterior" se estiver na pág 1
+        btnPrev.disabled = meta.paginaAtual <= 1;
 
-            card.innerHTML = `
-                <img src="${imagemSrc}" alt="Foto" class="card-avatar">
-                <div class="card-nick">${user.nickname || 'No Nick'}</div>
-                <div class="card-name">${user.nome}</div>
-                <div class="card-location">${user.cidade || '??'}/${user.estado || '??'}</div>
-            `;
-            listContainer.appendChild(card);
-        });
+        // Desativa "Próximo" se for a última página
+        btnNext.disabled = meta.paginaAtual >= meta.totalPaginas;
 
     } catch (error) {
         console.error("Erro:", error);
-        listContainer.innerHTML = '<p style="color: red; text-align:center;">Erro ao carregar lista.</p>';
+        listContainer.innerHTML = '<p style="color: red; text-align:center;">Erro ao conectar com servidor.</p>';
     }
 }
