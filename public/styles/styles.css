@@ -27,7 +27,6 @@ body {
     display: flex;
     width: 900px;
     height: 600px;
-    /* Aumentei a altura para caber o novo campo UF */
     background-color: var(--bg-pink);
     background-image:
         linear-gradient(var(--grid-line) 2px, transparent 2px),
@@ -63,27 +62,35 @@ body {
     padding: 0 20px;
 }
 
+/* --- ÁREA DO FORMULÁRIO --- */
 .form-area {
     width: 65%;
-    padding: 30px 40px;
+    height: 100%;
+    padding: 60px 40px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
 }
 
+/* Título e Barra de Progresso */
 h2 {
     font-family: 'Press Start 2P', cursive;
     font-size: 16px;
     color: var(--dark-border);
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     margin-top: 0;
+    text-align: center;
+    flex-shrink: 0;
 }
 
 .progress-bar {
     display: flex;
     gap: 10px;
-    margin-bottom: 25px;
+    margin-bottom: 10px;
+    justify-content: center;
+    flex-shrink: 0;
 }
 
 .dot {
@@ -99,33 +106,58 @@ h2 {
     background-color: var(--btn-green);
 }
 
+/* --- FORMULÁRIO --- */
 form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    flex-grow: 1;
+}
+
+/* --- COMPORTAMENTO DOS STEPS --- */
+.form-step {
+    display: none;
     width: 100%;
 }
 
+.form-step.active-step {
+    display: block;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+#step-1,
+#step-2,
+#step-3 {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+/* --- INPUTS --- */
 .input-group {
     width: 100%;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
     text-align: left;
     display: flex;
     flex-direction: column;
+    min-height: 55px;
 }
 
 label {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bold;
     color: var(--dark-border);
-    margin-bottom: 4px;
+    margin-bottom: 2px;
 }
 
 input,
 textarea {
     width: 100%;
-    padding: 10px;
+    padding: 5px 10px;
+    height: 38px;
     font-family: 'VT323', monospace;
     font-size: 20px;
     border: 3px solid var(--dark-border);
-    border-radius: 10px;
+    border-radius: 8px;
     background-color: #fff;
     outline: none;
 }
@@ -134,11 +166,17 @@ input:focus {
     background-color: #f0f8ff;
 }
 
-/* ERROS E ANIMAÇÃO */
+.row {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+}
+
+/* --- MENSAGENS DE ERRO --- */
 .error-msg {
     color: var(--error-red);
-    font-size: 14px;
-    margin-top: 2px;
+    font-size: 11px;
+    margin-top: 1px;
     display: none;
     font-weight: bold;
 }
@@ -148,6 +186,7 @@ input.input-error {
     background-color: #fff0f0;
 }
 
+/* --- ANIMAÇÕES --- */
 .shake {
     animation: shake 0.4s cubic-bezier(.36, .07, .19, .97) both;
 }
@@ -176,21 +215,6 @@ input.input-error {
     }
 }
 
-.row {
-    display: flex;
-    gap: 15px;
-    width: 100%;
-}
-
-.form-step {
-    display: none;
-    animation: fadeIn 0.3s ease-in-out;
-}
-
-.form-step.active-step {
-    display: block;
-}
-
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -203,9 +227,11 @@ input.input-error {
     }
 }
 
+/* --- PERFIL (STEP 3) --- */
 .profile-container {
     display: flex;
     align-items: center;
+    justify-content: center;
     width: 100%;
     margin-bottom: 20px;
 }
@@ -233,6 +259,18 @@ input.input-error {
     background-position: center;
 }
 
+/* --- BOTÕES --- */
+.btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding-top: 10px;
+    margin-bottom: 5px;
+    flex-shrink: 0;
+    margin-top: auto;
+}
+
 .btn-small {
     margin-top: 10px;
     font-family: 'VT323', monospace;
@@ -241,11 +279,6 @@ input.input-error {
     background: white;
     border-radius: 4px;
     padding: 2px 5px;
-}
-
-.btn-container {
-    text-align: center;
-    margin-top: 15px;
 }
 
 .btn-next {
@@ -266,16 +299,8 @@ input.input-error {
     box-shadow: 2px 2px 0px var(--dark-border);
 }
 
-.btn-small {
-    cursor: pointer;
-    position: relative;
-    z-index: 100;
-}
-
-
 .btn-clear {
     background-color: #D32F2F;
-    /* Vermelho */
     color: white;
     font-family: 'Press Start 2P', cursive;
     font-size: 12px;
@@ -293,35 +318,31 @@ input.input-error {
     box-shadow: 2px 2px 0px var(--dark-border);
 }
 
-.btn-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 15px;
-}
-
-/* Grid para organizar os cards lado a lado */
+/* --- LISTA --- */
 .users-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    /* Responsivo */
-    gap: 20px;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 180px;
+    gap: 15px;
     width: 100%;
-    padding-bottom: 20px;
+    flex-grow: 1;
+    align-content: start;
+    padding-bottom: 0;
 }
 
-/* O Card individual de cada jogador */
 .user-card {
     background: #fff;
     border: 3px solid var(--dark-border);
     border-radius: 8px;
     box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.1);
-    padding: 15px;
+    padding: 10px;
     text-align: center;
     transition: transform 0.2s;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    height: 100%;
 }
 
 .user-card:hover {
@@ -329,17 +350,15 @@ input.input-error {
     box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.2);
 }
 
-/* A foto dentro do card */
 .card-avatar {
-    width: 80px;
-    height: 80px;
+    width: 70px;
+    height: 70px;
     border: 3px solid var(--dark-border);
     border-radius: 50%;
     object-fit: cover;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     background-color: #eee;
 }
-
 
 .card-nick {
     font-family: 'Press Start 2P', cursive;
@@ -347,10 +366,14 @@ input.input-error {
     color: var(--btn-green);
     margin-bottom: 5px;
     word-break: break-all;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .card-name {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
     color: var(--dark-border);
     margin-bottom: 0;
@@ -359,26 +382,30 @@ input.input-error {
 .card-location {
     font-size: 14px;
     color: #666;
-    margin-top: 5px;
+    margin-top: 2px;
 }
 
-/* PAGINAÇÃO */
+/* --- PAGINAÇÃO --- */
 .pagination-controls {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 20px;
-    margin-top: 20px;
-    margin-bottom: 20px;
     width: 100%;
+    height: 50px;
+    margin-top: auto;
+    margin-bottom: 0;
+    padding-top: 265px;
+    background: transparent;
+    flex-shrink: 0;
 }
 
 .pagination-controls button {
     background-color: #fff;
     border: 2px solid var(--dark-border);
-    padding: 10px 15px;
+    padding: 5px 15px;
     font-family: 'VT323', monospace;
-    font-size: 18px;
+    font-size: 16px;
     cursor: pointer;
     transition: all 0.2s;
 }
@@ -395,40 +422,4 @@ input.input-error {
     color: #999;
     cursor: not-allowed;
     border-color: #aaa;
-}
-
-.form-area {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    overflow: hidden;
-
-}
-
-.users-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-auto-rows: 180px;
-    gap: 15px;
-    width: 100%;
-    flex-grow: 1;
-    align-content: start;
-    padding-bottom: 0;
-}
-
-
-.user-card {
-    height: 100%;
-    padding: 10px;
-    justify-content: center;
-}
-
-
-.pagination-controls {
-    margin-top: auto;
-    height: 50px;
-    margin-bottom: 0;
-    padding-top: 300px;
-    background: transparent;
 }

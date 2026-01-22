@@ -175,10 +175,7 @@ function validateStep1() {
         isValid = false;
     } else removeError(inputEndereco);
 
-    if (inputNumero.value.trim() === "") {
-        setError(inputNumero, "Obrigatório.");
-        isValid = false;
-    } else removeError(inputNumero);
+    removeError(inputNumero);
 
     return isValid;
 }
@@ -249,15 +246,29 @@ nextBtn.addEventListener('click', async (e) => {
             nextBtn.disabled = true;
 
             try {
+
                 const formData = new FormData(form);
+
+                if (inputNumero.value.trim() === "") {
+                    formData.set('numero', 'SN');
+                }
+
+                const arquivoInput = document.getElementById('avatarInput');
+
+                if (arquivoInput.files.length > 0) {
+                    formData.set('avatar', arquivoInput.files[0]);
+                    console.log("📸 Foto anexada manualmente:", arquivoInput.files[0].name);
+                } else {
+                    console.warn("⚠️ Nenhuma foto selecionada pelo usuário.");
+                }
+
                 formData.append('senhaRepetida', inputConfirmaSenha.value);
 
-                const response = await fetch('/usuario', {
+                const response = await fetch('/cadastrar_usuario', {
                     method: 'POST',
                     body: formData
                 });
 
-                // --- MUDANÇA AQUI: LER COMO TEXTO PRIMEIRO ---
                 const textResponse = await response.text();
                 let result;
 
@@ -265,12 +276,12 @@ nextBtn.addEventListener('click', async (e) => {
                     result = JSON.parse(textResponse);
                 } catch (e) {
                     console.error("Erro CRÍTICO do servidor (HTML):", textResponse);
-                    throw new Error("O servidor falhou (Erro 500). Olhe o console (F12) para ver o erro real.");
+                    throw new Error("O servidor falhou (Erro 500). Olhe o console (F12).");
                 }
 
                 if (response.ok) {
-                    alert("🎉 Sucesso! Bem-vindo ao Mandacaru Games!");
-                    window.location.reload();
+                    alert("🎉 Sucesso! Conta criada e foto salva!");
+                    window.location.href = "/jogadores"; // Redireciona para a lista para você ver a foto
                 } else {
                     alert(`Erro: ${result.mensagem || 'Falha ao cadastrar'}`);
                     playErrorSound();

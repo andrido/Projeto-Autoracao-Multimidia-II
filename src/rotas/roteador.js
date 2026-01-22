@@ -4,33 +4,31 @@ const { criarUsuario, listarContas } = require('../controlador/ControladorUsuari
 const multer = require('multer');
 const path = require('path');
 
-// Config do Multer
+// --- MUDANÇA: Configuração exigida (Pasta e Limite 5MB) ---
 const storage = multer.diskStorage({
-    destination: (req, file, cb) => cb(null, 'uploads/'),
+    destination: (req, file, cb) => cb(null, 'fotos_usuarios/'), // Pasta nova
     filename: (req, file, cb) => {
         cb(null, Date.now() + '-' + file.originalname);
     }
 });
-const upload = multer({ storage: storage });
 
-// --- ROTAS DO FRONTEND (TELAS) ---
+const upload = multer({
+    storage: storage,
+    limits: { fileSize: 5 * 1024 * 1024 } // Limite de 5MB
+});
 
-// Tela de Listagem (Paginação)
+// --- ROTAS DO FRONTEND (Telas) ---
 rotas.get('/jogadores', (req, res) => {
     res.sendFile(path.join(process.cwd(), 'public', 'lista.html'));
 });
 
-// Tela de Cadastro (Se quiser acessar direto pela URL)
 rotas.get('/cadastro', (req, res) => {
     res.sendFile(path.join(process.cwd(), 'public', 'cadastro.html'));
 });
 
-// --- ROTAS DA API (DADOS) ---
+// --- ROTAS DA API ---
+rotas.get('/listar_usuarios', listarContas);
 
-// Listar (GET)
-rotas.get('/api/usuario', listarContas);
-
-// Cadastrar (POST) - AQUI ESTAVA O SEU ERRO DE CANNOT POST
-rotas.post('/usuario', upload.single('avatar'), criarUsuario);
+rotas.post('/cadastrar_usuario', upload.single('avatar'), criarUsuario);
 
 module.exports = rotas;

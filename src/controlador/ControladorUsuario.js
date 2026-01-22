@@ -3,11 +3,11 @@ const usuarioService = require('../servicos/ServicoUsuario');
 
 const criarUsuario = async (req, res) => {
     try {
-        const { nome, email, cep, endereco, cidade, estado, senha, senhaRepetida } = req.body;
+        const { nome, email, cep, endereco, cidade, estado, senha, senhaRepetida, nickname } = req.body;
         const foto = req.file ? req.file.filename : null;
 
         const resultado = await usuarioService.criarUsuario({
-            nome, email, cep, endereco, cidade, estado, senha, senhaRepetida, foto
+            nome, email, cep, endereco, cidade, estado, senha, senhaRepetida, foto, nickname
         });
 
         return res.status(201).json(resultado);

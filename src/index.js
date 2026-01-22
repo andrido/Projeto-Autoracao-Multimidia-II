@@ -1,21 +1,23 @@
 const express = require('express');
 const cors = require('cors');
-const rotas = require('./rotas/roteador'); // Confirme se o nome do arquivo é esse mesmo
 const path = require('path');
+const rotas = require('./rotas/roteador');
+
 const app = express();
 
-
 app.use(cors());
-
 app.use(express.json());
 
-app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
-app.use(express.static('public'));
+// --- MUDANÇA: Pasta exigida pelo professor ---
+app.use('/fotos_usuarios', express.static(path.join(process.cwd(), 'fotos_usuarios')));
+
+// Arquivos do site (front)
+app.use(express.static(path.join(process.cwd(), 'public')));
 
 app.use(rotas);
 
-
-const PORT = 3000;
+// --- MUDANÇA: Porta 5000 exigida ---
+const PORT = 5000;
 app.listen(PORT, () => {
     console.log(`✅ Servidor rodando na porta ${PORT}`);
 });

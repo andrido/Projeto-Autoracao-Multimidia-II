@@ -1,5 +1,5 @@
 let paginaAtual = 1;
-const limite = 6; // Quantos cards por página
+const limite = 4; // Quantos cards por página
 
 document.addEventListener('DOMContentLoaded', () => {
     carregarUsuarios(paginaAtual);
@@ -25,7 +25,7 @@ async function carregarUsuarios(pagina) {
 
     try {
         // Agora passamos a página na URL
-        const response = await fetch(`/api/usuario?pagina=${pagina}&limite=${limite}`);
+        const response = await fetch(`/listar_usuarios?pagina=${pagina}&limite=${limite}`);
         const dados = await response.json();
 
         // O backend agora retorna { usuarios: [], meta: {} }
@@ -42,7 +42,7 @@ async function carregarUsuarios(pagina) {
                 const card = document.createElement('div');
                 card.className = 'user-card';
 
-                const imagemSrc = user.foto ? `/uploads/${user.foto}` : 'https://i.pinimg.com/736x/6f/44/ab/6f44abacfded1fe9a286cedaaf87f1a2.jpg';
+                const imagemSrc = user.foto ? `/fotos_usuarios/${user.foto}` : 'https://i.pinimg.com/736x/6f/44/ab/6f44abacfded1fe9a286cedaaf87f1a2.jpg';
 
                 card.innerHTML = `
                     <img src="${imagemSrc}" alt="Foto" class="card-avatar">
