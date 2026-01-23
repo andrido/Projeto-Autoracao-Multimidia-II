@@ -14,11 +14,13 @@ Abra o terminal na pasta do projeto e digite:
 
 ```bash
 npm install
-
+```
 ### Passo 2: Instalar Dependências
 Para iniciar nosso servidor express.js, basta utilizar o comando no terminal:
+```bash
 npm run dev
-
+```
 ### Passo 3: Acessando nosso endereço Home
-O start da nossa aplicação pode ser acessado no endereço http://localhost:5000 após
-iniciar o servidor do backend.
+O ponto inicial da nossa aplicação pode ser acessado pelo navegador web no seguinte endereço:
+```
+http://localhost:5000
