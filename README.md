@@ -24,3 +24,6 @@ npm run dev
 O ponto inicial da nossa aplicação pode ser acessado pelo navegador web no seguinte endereço:
 ```
 http://localhost:5000
+```
+
+<div align="center"> <img width="658" height="655" alt="image" src="https://github.com/user-attachments/assets/e4c46479-7582-44d5-ad67-e68a58277eba" /> </div>
