@@ -98,7 +98,7 @@ const criarUsuario = async (dadosUsuario) => {
 };
 
 const listarUsuarios = (pagina = 1, limite = 4) => {
-    // Mesma lógica de antes...
+
     const pag = parseInt(pagina);
     const lim = parseInt(limite);
     const totalItens = bancodedados.contas.length;

@@ -48,15 +48,12 @@ body {
 .form-area {
     width: 70%;
     height: 100%;
-    /* Padding ajustado para caber a lista sem scroll */
     padding: 30px 40px;
     display: flex;
     flex-direction: column;
-    /* Começa do topo, o rodapé (botões/paginação) usa margin-top: auto para ir pro fundo */
     justify-content: flex-start;
     position: relative;
     overflow: hidden;
-    /* Trava o scroll */
 }
 
 /* Título */
@@ -255,7 +252,6 @@ input.input-error {
     margin-bottom: 5px;
     flex-shrink: 0;
     margin-top: auto;
-    /* Joga os botões para o final do container */
 }
 
 .btn-small {
@@ -312,7 +308,6 @@ input.input-error {
 .users-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    /* Altura fixa menor para caber na tela sem scroll */
     grid-auto-rows: 150px;
     gap: 15px;
     width: 100%;
@@ -344,7 +339,6 @@ input.input-error {
 
 .card-avatar {
     width: 60px;
-    /* Reduzido para caber melhor */
     height: 60px;
     border: 3px solid var(--dark-border);
     border-radius: 50%;

@@ -7,7 +7,7 @@ const form = document.getElementById('pixelForm');
 
 // Variáveis Novas
 const btnUpload = document.getElementById('btnUpload');
-const btnLimpar = document.getElementById('btnLimpar'); // Novo botão
+const btnLimpar = document.getElementById('btnLimpar');
 
 // Inputs
 const inputNome = document.getElementById('nome');
@@ -281,7 +281,7 @@ nextBtn.addEventListener('click', async (e) => {
 
                 if (response.ok) {
                     alert("🎉 Sucesso! Conta criada e foto salva!");
-                    window.location.href = "/jogadores"; // Redireciona para a lista para você ver a foto
+                    window.location.href = "/jogadores";
                 } else {
                     alert(`Erro: ${result.mensagem || 'Falha ao cadastrar'}`);
                     playErrorSound();

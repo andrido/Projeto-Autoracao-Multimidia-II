@@ -1,4 +1,3 @@
-// Apenas recebe requisição, orquestra e retorna resposta
 const usuarioService = require('../servicos/ServicoUsuario');
 
 const criarUsuario = async (req, res) => {

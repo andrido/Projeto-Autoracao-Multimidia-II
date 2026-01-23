@@ -3,10 +3,19 @@ const rotas = express.Router();
 const { criarUsuario, listarContas } = require('../controlador/ControladorUsuario');
 const multer = require('multer');
 const path = require('path');
+const fs = require('fs');
 
-// --- MUDANÇA: Configuração exigida (Pasta e Limite 5MB) ---
+
+
+const pastaFotos = path.join(process.cwd(), 'fotos_usuarios');
+
+if (!fs.existsSync(pastaFotos)) {
+    fs.mkdirSync(pastaFotos, { recursive: true });
+    console.log("✅ Pasta 'fotos_usuarios' criada automaticamente!");
+}
+
 const storage = multer.diskStorage({
-    destination: (req, file, cb) => cb(null, 'fotos_usuarios/'), // Pasta nova
+    destination: (req, file, cb) => cb(null, 'fotos_usuarios/'),
     filename: (req, file, cb) => {
         cb(null, Date.now() + '-' + file.originalname);
     }
