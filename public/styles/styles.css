@@ -14,7 +14,7 @@
 body {
     margin: 0;
     padding: 0;
-    background: linear-gradient(#448040,#0f4001);
+    background: linear-gradient(#448040, #0f4001);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -41,39 +41,42 @@ body {
     justify-content: center;
     align-items: center;
     border-right: 4px solid var(--dark-border);
-    background:linear-gradient(#e8d671, #fbb336);
+    background: linear-gradient(#e8d671, #fbb336);
 }
 
-
-
-/* --- ÁREA DO FORMULÁRIO --- */
+/* --- ÁREA DO CONTEÚDO (Compartilhada entre Form e Lista) --- */
 .form-area {
     width: 70%;
     height: 100%;
-    padding: 60px 40px;
+    /* Padding ajustado para caber a lista sem scroll */
+    padding: 30px 40px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    /* Começa do topo, o rodapé (botões/paginação) usa margin-top: auto para ir pro fundo */
+    justify-content: flex-start;
     position: relative;
     overflow: hidden;
+    /* Trava o scroll */
 }
 
-/* Título e Barra de Progresso */
+/* Título */
 h2 {
     font-family: 'Pixel Operator HB SC', cursive;
-    font-size: 40px;
+    font-size: 32px;
     color: var(--dark-border);
-    margin-bottom: 12px;
+    margin-bottom: 20px;
     margin-top: 0;
     text-align: center;
     flex-shrink: 0;
 }
 
+/* Barra de Progresso (Cadastro) */
 .progress-bar {
     display: flex;
     gap: 10px;
     justify-content: center;
     flex-shrink: 0;
+    margin-bottom: 20px;
 }
 
 .dot {
@@ -89,7 +92,7 @@ h2 {
     background-color: var(--btn-green);
 }
 
-/* --- FORMULÁRIO --- */
+/* --- FORMULÁRIO (Cadastro) --- */
 form {
     display: flex;
     flex-direction: column;
@@ -108,6 +111,7 @@ form {
     animation: fadeIn 0.3s ease-in-out;
 }
 
+/* Centraliza verticalmente o conteúdo de cada passo */
 #step-1,
 #step-2,
 #step-3 {
@@ -241,7 +245,7 @@ input.input-error {
     background-position: center;
 }
 
-/* --- BOTÕES --- */
+/* --- BOTÕES GERAIS --- */
 .btn-container {
     display: flex;
     justify-content: center;
@@ -251,6 +255,7 @@ input.input-error {
     margin-bottom: 5px;
     flex-shrink: 0;
     margin-top: auto;
+    /* Joga os botões para o final do container */
 }
 
 .btn-small {
@@ -260,8 +265,10 @@ input.input-error {
     cursor: pointer;
     border: 2px solid var(--dark-border);
     background: var(--btn-green);
+    color: white;
+    /* Garante texto branco */
     border-radius: 4px;
-    padding: 2px 5px;
+    padding: 2px 10px;
 }
 
 .btn-next {
@@ -283,7 +290,7 @@ input.input-error {
 }
 
 .btn-clear {
-    background-color:var(--btn-green);
+    background-color: var(--btn-green);
     color: white;
     font-family: 'Pixel Operator HB SC', cursive;
     font-size: 20px;
@@ -301,16 +308,17 @@ input.input-error {
     box-shadow: 2px 2px 0px var(--dark-border);
 }
 
-/* --- LISTA --- */
+/* --- LISTA DE JOGADORES (GRID) --- */
 .users-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-auto-rows: 180px;
+    /* Altura fixa menor para caber na tela sem scroll */
+    grid-auto-rows: 150px;
     gap: 15px;
     width: 100%;
-    flex-grow: 1;
+    flex-grow: 0;
     align-content: start;
-    padding-bottom: 0;
+    margin-bottom: 10px;
 }
 
 .user-card {
@@ -318,7 +326,7 @@ input.input-error {
     border: 3px solid var(--dark-border);
     border-radius: 8px;
     box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.1);
-    padding: 10px;
+    padding: 8px;
     text-align: center;
     transition: transform 0.2s;
     display: flex;
@@ -326,6 +334,7 @@ input.input-error {
     align-items: center;
     justify-content: center;
     height: 100%;
+    overflow: hidden;
 }
 
 .user-card:hover {
@@ -334,51 +343,60 @@ input.input-error {
 }
 
 .card-avatar {
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    /* Reduzido para caber melhor */
+    height: 60px;
     border: 3px solid var(--dark-border);
     border-radius: 50%;
     object-fit: cover;
-    margin-bottom: 8px;
+    margin-bottom: 5px;
     background-color: #eee;
 }
 
 .card-nick {
     font-family: 'Pixel Operator HB SC', cursive;
-    font-size: 24px;
+    font-size: 20px;
+    /* Reduzido */
     color: var(--btn-green);
-    margin-bottom: 5px;
-    word-break: break-all;
-    max-width: 100%;
+    margin-bottom: 2px;
+    width: 100%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
 .card-name {
-    font-size: 18px;
+    font-size: 16px;
+    /* Reduzido */
     font-weight: bold;
     color: var(--dark-border);
     margin-bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .card-location {
-    font-size: 24px;
+    font-size: 18px;
+    /* Reduzido */
     color: #666;
     margin-top: 2px;
 }
 
-/* --- PAGINAÇÃO --- */
+/* --- PAGINAÇÃO (Fixa no chão) --- */
 .pagination-controls {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 20px;
     width: 100%;
-    height: 100px;
+    height: 60px;
+
+    /* Empurra para o fundo da div pai */
     margin-top: auto;
-    margin-bottom: 0;
-    padding-top: 265px;
+    padding-top: 0;
+
     background: transparent;
     flex-shrink: 0;
 }
@@ -388,9 +406,10 @@ input.input-error {
     border: 2px solid var(--dark-border);
     padding: 5px 15px;
     font-family: 'Pixel Operator HB SC', monospace;
-    font-size: 24px;
+    font-size: 20px;
     cursor: pointer;
     transition: all 0.2s;
+    color: #fff;
 }
 
 .pagination-controls button:hover:not(:disabled) {

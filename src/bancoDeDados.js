@@ -15,9 +15,6 @@ let usuarios = {
         estado: 'CE',
         saldo: 0
     }],
-    saques: [],
-    depositos: [],
-    transferencias: [],
 }
 
 
